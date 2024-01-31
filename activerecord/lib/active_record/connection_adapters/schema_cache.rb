@@ -18,16 +18,6 @@ module ActiveRecord
         @cache_path = cache_path
       end
 
-      def set_schema_cache(cache)
-        @cache = cache
-      end
-
-      def clear!
-        @cache = empty_cache
-
-        nil
-      end
-
       def load!(connection)
         cache(connection)
 
@@ -146,10 +136,6 @@ module ActiveRecord
       def initialize(abstract_schema_reflection, connection)
         @schema_reflection = abstract_schema_reflection
         @connection = connection
-      end
-
-      def clear!
-        @schema_reflection.clear!
       end
 
       def load!
